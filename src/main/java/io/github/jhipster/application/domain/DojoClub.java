@@ -59,6 +59,9 @@ public class DojoClub implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Athlete> athletes = new HashSet<>();
 
+    @ManyToOne
+    private User user;
+
     @ManyToOne(optional = false)
     @NotNull
     private Ligue ligue;
@@ -186,6 +189,19 @@ public class DojoClub implements Serializable {
 
     public void setAthletes(Set<Athlete> athletes) {
         this.athletes = athletes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public DojoClub user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Ligue getLigue() {

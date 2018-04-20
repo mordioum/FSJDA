@@ -28,8 +28,6 @@ public class Saison implements Serializable {
     private Long id;
 
     @NotNull
-    @Min(value = 0)
-    @Max(value = 4)
     @Column(name = "saison", nullable = false)
     private Integer saison;
 

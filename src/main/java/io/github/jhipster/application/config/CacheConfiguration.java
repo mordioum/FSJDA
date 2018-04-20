@@ -57,6 +57,7 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.Licence.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Saison.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Saison.class.getName() + ".licences", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.DojoClub.class.getName() + ".users", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

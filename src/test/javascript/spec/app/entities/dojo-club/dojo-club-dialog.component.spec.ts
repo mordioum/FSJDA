@@ -9,6 +9,7 @@ import { FsjdaTestModule } from '../../../test.module';
 import { DojoClubDialogComponent } from '../../../../../../main/webapp/app/entities/dojo-club/dojo-club-dialog.component';
 import { DojoClubService } from '../../../../../../main/webapp/app/entities/dojo-club/dojo-club.service';
 import { DojoClub } from '../../../../../../main/webapp/app/entities/dojo-club/dojo-club.model';
+import { UserService } from '../../../../../../main/webapp/app/shared';
 import { LigueService } from '../../../../../../main/webapp/app/entities/ligue';
 
 describe('Component Tests', () => {
@@ -25,6 +26,7 @@ describe('Component Tests', () => {
                 imports: [FsjdaTestModule],
                 declarations: [DojoClubDialogComponent],
                 providers: [
+                    UserService,
                     LigueService,
                     DojoClubService
                 ]

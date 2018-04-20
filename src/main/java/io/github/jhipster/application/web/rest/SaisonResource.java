@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +55,8 @@ public class SaisonResource {
         if (saison.getId() != null) {
             throw new BadRequestAlertException("A new saison cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        LocalDate today = LocalDate.now();
+        saison.setDateCreation(today);
         Saison result = saisonRepository.save(saison);
         return ResponseEntity.created(new URI("/api/saisons/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))

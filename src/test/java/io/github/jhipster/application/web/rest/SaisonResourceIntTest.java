@@ -40,8 +40,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = FsjdaApp.class)
 public class SaisonResourceIntTest {
 
-    private static final Integer DEFAULT_SAISON = 0;
-    private static final Integer UPDATED_SAISON = 1;
+    private static final Integer DEFAULT_SAISON = 1;
+    private static final Integer UPDATED_SAISON = 2;
 
     private static final LocalDate DEFAULT_DATE_CREATION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_CREATION = LocalDate.now(ZoneId.systemDefault());

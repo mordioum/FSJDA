@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +55,8 @@ public class LicenceResource {
         if (licence.getId() != null) {
             throw new BadRequestAlertException("A new licence cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        LocalDate today = LocalDate.now();
+        licence.setDateCreation(today);
         Licence result = licenceRepository.save(licence);
         return ResponseEntity.created(new URI("/api/licences/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))

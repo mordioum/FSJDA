@@ -50,6 +50,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="ligue_id" type="bigint">
                 <constraints nullable="false" />
             </column>

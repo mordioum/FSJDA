@@ -13,12 +13,8 @@
             "fieldName": "saison",
             "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "max",
-                "min"
-            ],
-            "fieldValidateRulesMax": 4,
-            "fieldValidateRulesMin": 0
+                "required"
+            ]
         },
         {
             "fieldName": "dateCreation",

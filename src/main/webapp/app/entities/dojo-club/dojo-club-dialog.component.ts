@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { DojoClub } from './dojo-club.model';
 import { DojoClubPopupService } from './dojo-club-popup.service';
 import { DojoClubService } from './dojo-club.service';
+import { User, UserService } from '../../shared';
 import { Ligue, LigueService } from '../ligue';
 
 @Component({
@@ -20,6 +21,8 @@ export class DojoClubDialogComponent implements OnInit {
     dojoClub: DojoClub;
     isSaving: boolean;
 
+    users: User[];
+
     ligues: Ligue[];
     dateCreationDp: any;
 
@@ -27,6 +30,7 @@ export class DojoClubDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private dojoClubService: DojoClubService,
+        private userService: UserService,
         private ligueService: LigueService,
         private eventManager: JhiEventManager
     ) {
@@ -34,6 +38,8 @@ export class DojoClubDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.userService.query()
+            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.ligueService.query()
             .subscribe((res: HttpResponse<Ligue[]>) => { this.ligues = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -70,6 +76,10 @@ export class DojoClubDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackUserById(index: number, item: User) {
+        return item.id;
     }
 
     trackLigueById(index: number, item: Ligue) {

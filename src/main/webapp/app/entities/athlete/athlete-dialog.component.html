@@ -35,16 +35,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="fsjdaApp.athlete.dateCreation" for="field_dateCreation">Date Creation</label>
-            <div class="input-group">
-                <input id="field_dateCreation" type="text" class="form-control" name="dateCreation" ngbDatepicker  #dateCreationDp="ngbDatepicker" [(ngModel)]="athlete.dateCreation"
-                />
-                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="fsjdaApp.athlete.sexe" for="field_sexe">Sexe</label>
             <select class="form-control" name="sexe" [(ngModel)]="athlete.sexe" id="field_sexe"  required>
                 <option value="M">{{'fsjdaApp.Sexe.M' | translate}}</option>

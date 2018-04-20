@@ -1,4 +1,4 @@
-import { BaseEntity } from './../../shared';
+import { BaseEntity, User } from './../../shared';
 
 export class DojoClub implements BaseEntity {
     constructor(
@@ -11,6 +11,7 @@ export class DojoClub implements BaseEntity {
         public telephone?: string,
         public email?: string,
         public athletes?: BaseEntity[],
+        public user?: User,
         public ligue?: BaseEntity,
     ) {
     }

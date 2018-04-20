@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="a460128 (generated)" id="1524237143082-1">
+      <addColumn tableName="dojo_club">
+         <column name="user_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="a460128 (generated)" id="1524237143082-2">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="dojo_club"
+                               constraintName="FK599jw8irkg7k2xrnmxcxpewfx"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+</databaseChangeLog>

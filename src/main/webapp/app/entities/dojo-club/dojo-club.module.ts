@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { FsjdaSharedModule } from '../../shared';
+import { FsjdaAdminModule } from '../../admin/admin.module';
 import {
     DojoClubService,
     DojoClubPopupService,
@@ -23,6 +24,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         FsjdaSharedModule,
+        FsjdaAdminModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

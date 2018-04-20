@@ -41,7 +41,7 @@ enum Sexe {
 }
 
 entity Saison{
-	saison Integer required max(4) min(0),
+	saison Integer required,
 	dateCreation LocalDate
 }
 
@@ -70,6 +70,11 @@ relationship OneToMany{
     TarifCeinture{licence} to Licence{tarifceinture(ceinture) required},
     Saison{licence} to Licence{saison(saison) required}
 }
+
+relationship ManyToOne {
+  DojoClub{user(login)} to User
+}
+
 paginate Discipline, Ligue, DojoClub, Athlete, TarifCeinture, Licence, Saison   with infinite-scroll
 
 
