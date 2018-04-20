@@ -44,6 +44,19 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Discipline.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Discipline.class.getName() + ".ligues", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ligue.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ligue.class.getName() + ".dojoclubs", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.DojoClub.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.DojoClub.class.getName() + ".athletes", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Athlete.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Athlete.class.getName() + ".licences", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.TarifCeinture.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.TarifCeinture.class.getName() + ".licences", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Licence.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Saison.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Saison.class.getName() + ".licences", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

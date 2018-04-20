@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Athlete.
+    -->
+    <changeSet id="20180420105910-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dojoclub_id"
+                                 baseTableName="athlete"
+                                 constraintName="fk_athlete_dojoclub_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dojo_club"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="fsjdaApp.dojoClub.home.title">Dojo Clubs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-dojo-club" [routerLink]="['/', { outlets: { popup: ['dojo-club-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="fsjdaApp.dojoClub.home.createLabel">
+            Create new Dojo Club
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="dojoClubs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="fsjdaApp.dojoClub.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="president"><span jhiTranslate="fsjdaApp.dojoClub.president">President</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.dojoClub.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="fsjdaApp.dojoClub.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="adresse"><span jhiTranslate="fsjdaApp.dojoClub.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="telephone"><span jhiTranslate="fsjdaApp.dojoClub.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="fsjdaApp.dojoClub.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ligue.name"><span jhiTranslate="fsjdaApp.dojoClub.ligue">Ligue</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let dojoClub of dojoClubs ;trackBy: trackId">
+                <td><a [routerLink]="['../dojo-club', dojoClub.id ]">{{dojoClub.id}}</a></td>
+                <td>{{dojoClub.name}}</td>
+                <td>{{dojoClub.president}}</td>
+                <td>{{dojoClub.dateCreation | date:'mediumDate'}}</td>
+                <td>{{dojoClub.description}}</td>
+                <td>{{dojoClub.adresse}}</td>
+                <td>{{dojoClub.telephone}}</td>
+                <td>{{dojoClub.email}}</td>
+                <td>
+                    <div *ngIf="dojoClub.ligue">
+                        <a [routerLink]="['../ligue', dojoClub.ligue?.id ]" >{{dojoClub.ligue?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../dojo-club', dojoClub.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dojo-club/'+ dojoClub.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dojo-club/'+ dojoClub.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

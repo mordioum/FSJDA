@@ -1,0 +1,34 @@
+
+<div *ngIf="discipline">
+    <h2><span jhiTranslate="fsjdaApp.discipline.detail.title">Discipline</span> {{discipline.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="fsjdaApp.discipline.name">Name</span></dt>
+        <dd>
+            <span>{{discipline.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.discipline.dateCreation">Date Creation</span></dt>
+        <dd>
+            <span>{{discipline.dateCreation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.discipline.description">Description</span></dt>
+        <dd>
+            <span>{{discipline.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'discipline/'+ discipline.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

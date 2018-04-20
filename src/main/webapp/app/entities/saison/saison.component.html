@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span jhiTranslate="fsjdaApp.saison.home.title">Saisons</span>
+        <button class="btn btn-primary float-right jh-create-entity create-saison" [routerLink]="['/', { outlets: { popup: ['saison-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="fsjdaApp.saison.home.createLabel">
+            Create new Saison
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="saisons">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="saison"><span jhiTranslate="fsjdaApp.saison.saison">Saison</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.saison.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let saison of saisons ;trackBy: trackId">
+                <td><a [routerLink]="['../saison', saison.id ]">{{saison.id}}</a></td>
+                <td>{{saison.saison}}</td>
+                <td>{{saison.dateCreation | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../saison', saison.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'saison/'+ saison.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'saison/'+ saison.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

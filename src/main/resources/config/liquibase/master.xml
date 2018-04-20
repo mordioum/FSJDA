@@ -5,6 +5,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105907_added_entity_Discipline.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105908_added_entity_Ligue.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105909_added_entity_DojoClub.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105910_added_entity_Athlete.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105911_added_entity_TarifCeinture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105912_added_entity_Licence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420112337_added_entity_Saison.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180420105908_added_entity_constraints_Ligue.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105909_added_entity_constraints_DojoClub.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105910_added_entity_constraints_Athlete.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180420105912_added_entity_constraints_Licence.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

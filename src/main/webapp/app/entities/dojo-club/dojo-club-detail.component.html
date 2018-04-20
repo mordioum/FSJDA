@@ -1,0 +1,56 @@
+
+<div *ngIf="dojoClub">
+    <h2><span jhiTranslate="fsjdaApp.dojoClub.detail.title">Dojo Club</span> {{dojoClub.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.name">Name</span></dt>
+        <dd>
+            <span>{{dojoClub.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.president">President</span></dt>
+        <dd>
+            <span>{{dojoClub.president}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.dateCreation">Date Creation</span></dt>
+        <dd>
+            <span>{{dojoClub.dateCreation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.description">Description</span></dt>
+        <dd>
+            <span>{{dojoClub.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.adresse">Adresse</span></dt>
+        <dd>
+            <span>{{dojoClub.adresse}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.telephone">Telephone</span></dt>
+        <dd>
+            <span>{{dojoClub.telephone}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.email">Email</span></dt>
+        <dd>
+            <span>{{dojoClub.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="fsjdaApp.dojoClub.ligue">Ligue</span></dt>
+        <dd>
+            <div *ngIf="dojoClub.ligue">
+                <a [routerLink]="['/ligue', dojoClub.ligue?.id]">{{dojoClub.ligue?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dojo-club/'+ dojoClub.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

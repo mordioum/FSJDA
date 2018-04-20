@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="fsjdaApp.athlete.home.title">Athletes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-athlete" [routerLink]="['/', { outlets: { popup: ['athlete-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="fsjdaApp.athlete.home.createLabel">
+            Create new Athlete
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="athletes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="fsjdaApp.athlete.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prenom"><span jhiTranslate="fsjdaApp.athlete.prenom">Prenom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.athlete.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sexe"><span jhiTranslate="fsjdaApp.athlete.sexe">Sexe</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateNaissance"><span jhiTranslate="fsjdaApp.athlete.dateNaissance">Date Naissance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lieuNaissance"><span jhiTranslate="fsjdaApp.athlete.lieuNaissance">Lieu Naissance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="adresse"><span jhiTranslate="fsjdaApp.athlete.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="telephone"><span jhiTranslate="fsjdaApp.athlete.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="fsjdaApp.athlete.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dojoclub.name"><span jhiTranslate="fsjdaApp.athlete.dojoclub">Dojoclub</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let athlete of athletes ;trackBy: trackId">
+                <td><a [routerLink]="['../athlete', athlete.id ]">{{athlete.id}}</a></td>
+                <td>{{athlete.nom}}</td>
+                <td>{{athlete.prenom}}</td>
+                <td>{{athlete.dateCreation | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'fsjdaApp.Sexe.' + athlete.sexe}}">{{athlete.sexe}}</td>
+                <td>{{athlete.dateNaissance | date:'mediumDate'}}</td>
+                <td>{{athlete.lieuNaissance}}</td>
+                <td>{{athlete.adresse}}</td>
+                <td>{{athlete.telephone}}</td>
+                <td>{{athlete.email}}</td>
+                <td>
+                    <div *ngIf="athlete.dojoclub">
+                        <a [routerLink]="['../dojo-club', athlete.dojoclub?.id ]" >{{athlete.dojoclub?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../athlete', athlete.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'athlete/'+ athlete.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'athlete/'+ athlete.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "licence",
+            "otherEntityName": "licence",
+            "otherEntityRelationshipName": "saison"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "saison",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "max",
+                "min"
+            ],
+            "fieldValidateRulesMax": 4,
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "dateCreation",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180420112337",
+    "entityTableName": "saison",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

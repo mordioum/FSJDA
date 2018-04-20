@@ -1,0 +1,32 @@
+
+{
+    "fsjdaApp": {
+        "athlete" : {
+            "home": {
+                "title": "Athletes",
+                "createLabel": "Créer un nouveau Athlete",
+                "createOrEditLabel": "Créer ou éditer un Athlete"
+            },
+            "created": "Un nouveau Athlete a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Athlete avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Athlete avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Athlete {{ id }} ?"
+            },
+            "detail": {
+                "title": "Athlete"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "dateCreation": "Date Creation",
+            "sexe": "Sexe",
+            "dateNaissance": "Date Naissance",
+            "lieuNaissance": "Lieu Naissance",
+            "adresse": "Adresse",
+            "telephone": "Telephone",
+            "email": "Email",
+            "licence": "Licence",
+            "dojoclub": "Dojoclub"
+        }
+    }
+}

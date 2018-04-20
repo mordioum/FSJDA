@@ -1,0 +1,76 @@
+entity Discipline{
+	name String required,
+    dateCreation LocalDate,
+    description String required
+}
+
+entity Ligue{
+	name String required,
+    president String required,
+    dateCreation LocalDate,
+    description String required,
+    adresse String required,
+    telephone String required,
+    email String required
+}
+
+entity DojoClub{
+	name String required,
+    president String required,
+    dateCreation LocalDate,
+    description String required,
+    adresse String required,
+    telephone String required,
+    email String required
+}
+
+entity Athlete{
+	nom String required,
+    prenom String required,
+    dateCreation LocalDate,
+    sexe Sexe required,
+    dateNaissance LocalDate required,
+    lieuNaissance String required,
+    adresse String required,
+    telephone String required,
+    email String required
+}
+
+enum Sexe {
+    M, F
+}
+
+entity Saison{
+	saison Integer required max(4) min(0),
+	dateCreation LocalDate
+}
+
+entity TarifCeinture{
+	Ceinture String required,
+    dateCreation LocalDate,
+    Montant Integer required
+}
+
+entity Licence{
+    typeLicence TypeLicence required,
+    dateCreation LocalDate,
+    photo ImageBlob required,
+    certificatMedical AnyBlob required
+}
+
+enum TypeLicence {
+    RENOUVELLEMENT, NOUVELLE
+}
+
+relationship OneToMany{
+	Discipline{ligue} to Ligue{discipline(name) required} ,
+    Ligue{dojoclub} to DojoClub{ligue(name) required},
+    DojoClub{athlete} to Athlete{dojoclub(name) required},
+    Athlete{licence} to Licence{athlete(prenom) required},
+    TarifCeinture{licence} to Licence{tarifceinture(ceinture) required},
+    Saison{licence} to Licence{saison(saison) required}
+}
+paginate Discipline, Ligue, DojoClub, Athlete, TarifCeinture, Licence, Saison   with infinite-scroll
+
+
+

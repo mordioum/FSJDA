@@ -1,0 +1,25 @@
+
+{
+    "fsjdaApp": {
+        "tarifCeinture" : {
+            "home": {
+                "title": "TarifCeintures",
+                "createLabel": "Créer un nouveau Tarif Ceinture",
+                "createOrEditLabel": "Créer ou éditer un Tarif Ceinture"
+            },
+            "created": "Un nouveau Tarif Ceinture a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Tarif Ceinture avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Tarif Ceinture avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Tarif Ceinture {{ id }} ?"
+            },
+            "detail": {
+                "title": "Tarif Ceinture"
+            },
+            "ceinture": "Ceinture",
+            "dateCreation": "Date Creation",
+            "montant": "Montant",
+            "licence": "Licence"
+        }
+    }
+}

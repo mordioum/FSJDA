@@ -1,0 +1,114 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLigueLabel" jhiTranslate="fsjdaApp.ligue.home.createOrEditLabel">Create or edit a Ligue</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ligue.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ligue.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="ligue.name" required/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.president" for="field_president">President</label>
+            <input type="text" class="form-control" name="president" id="field_president"
+                [(ngModel)]="ligue.president" required/>
+            <div [hidden]="!(editForm.controls.president?.dirty && editForm.controls.president?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.president?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.dateCreation" for="field_dateCreation">Date Creation</label>
+            <div class="input-group">
+                <input id="field_dateCreation" type="text" class="form-control" name="dateCreation" ngbDatepicker  #dateCreationDp="ngbDatepicker" [(ngModel)]="ligue.dateCreation"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="ligue.description" required/>
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.adresse" for="field_adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                [(ngModel)]="ligue.adresse" required/>
+            <div [hidden]="!(editForm.controls.adresse?.dirty && editForm.controls.adresse?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.adresse?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.telephone" for="field_telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="field_telephone"
+                [(ngModel)]="ligue.telephone" required/>
+            <div [hidden]="!(editForm.controls.telephone?.dirty && editForm.controls.telephone?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.telephone?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="ligue.email" required/>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.discipline" for="field_discipline">Discipline</label>
+            <select class="form-control" id="field_discipline" name="discipline" [(ngModel)]="ligue.discipline"  required>
+                <option *ngIf="!editForm.value.discipline" [ngValue]="null" selected></option>
+                <option [ngValue]="disciplineOption.id === ligue.discipline?.id ? ligue.discipline : disciplineOption" *ngFor="let disciplineOption of disciplines; trackBy: trackDisciplineById">{{disciplineOption.name}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.discipline?.dirty && editForm.controls.discipline?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.discipline?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

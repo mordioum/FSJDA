@@ -1,0 +1,30 @@
+
+{
+    "fsjdaApp": {
+        "dojoClub" : {
+            "home": {
+                "title": "DojoClubs",
+                "createLabel": "Créer un nouveau Dojo Club",
+                "createOrEditLabel": "Créer ou éditer un Dojo Club"
+            },
+            "created": "Un nouveau Dojo Club a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dojo Club avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dojo Club avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dojo Club {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dojo Club"
+            },
+            "name": "Name",
+            "president": "President",
+            "dateCreation": "Date Creation",
+            "description": "Description",
+            "adresse": "Adresse",
+            "telephone": "Telephone",
+            "email": "Email",
+            "athlete": "Athlete",
+            "ligue": "Ligue"
+        }
+    }
+}

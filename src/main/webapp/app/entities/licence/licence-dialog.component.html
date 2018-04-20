@@ -1,0 +1,134 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLicenceLabel" jhiTranslate="fsjdaApp.licence.home.createOrEditLabel">Create or edit a Licence</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!licence.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="licence.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.typeLicence" for="field_typeLicence">Type Licence</label>
+            <select class="form-control" name="typeLicence" [(ngModel)]="licence.typeLicence" id="field_typeLicence"  required>
+                <option value="RENOUVELLEMENT">{{'fsjdaApp.TypeLicence.RENOUVELLEMENT' | translate}}</option>
+                <option value="NOUVELLE">{{'fsjdaApp.TypeLicence.NOUVELLE' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.typeLicence?.dirty && editForm.controls.typeLicence?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.typeLicence?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.dateCreation" for="field_dateCreation">Date Creation</label>
+            <div class="input-group">
+                <input id="field_dateCreation" type="text" class="form-control" name="dateCreation" ngbDatepicker  #dateCreationDp="ngbDatepicker" [(ngModel)]="licence.dateCreation"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateCreationDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.photo" for="field_photo">Photo</label>
+            <div>
+                <img [src]="'data:' + licence.photoContentType + ';base64,' + licence.photo" style="max-height: 100px;" *ngIf="licence.photo" alt="licence image"/>
+                <div *ngIf="licence.photo" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{licence.photoContentType}}, {{byteSize(licence.photo)}}</span>
+                    <button type="button" (click)="clearInputImage('photo', 'photoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_photo" (change)="setFileData($event, licence, 'photo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                [(ngModel)]="licence.photo" required/>
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                [(ngModel)]="licence.photoContentType" />
+            <div [hidden]="!(editForm.controls.photo?.dirty && editForm.controls.photo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.photo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.certificatMedical" for="field_certificatMedical">Certificat Medical</label>
+            <div>
+                <div *ngIf="licence.certificatMedical" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(licence.certificatMedicalContentType, licence.certificatMedical)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{licence.certificatMedicalContentType}}, {{byteSize(licence.certificatMedical)}}</span>
+                    <button type="button" (click)="licence.certificatMedical=null;licence.certificatMedicalContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_certificatMedical" (change)="setFileData($event, licence, 'certificatMedical', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="certificatMedical" id="field_certificatMedical"
+                [(ngModel)]="licence.certificatMedical" required/>
+            <input type="hidden" class="form-control" name="certificatMedicalContentType" id="field_certificatMedicalContentType"
+                [(ngModel)]="licence.certificatMedicalContentType" />
+            <div [hidden]="!(editForm.controls.certificatMedical?.dirty && editForm.controls.certificatMedical?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.certificatMedical?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.athlete" for="field_athlete">Athlete</label>
+            <select class="form-control" id="field_athlete" name="athlete" [(ngModel)]="licence.athlete"  required>
+                <option *ngIf="!editForm.value.athlete" [ngValue]="null" selected></option>
+                <option [ngValue]="athleteOption.id === licence.athlete?.id ? licence.athlete : athleteOption" *ngFor="let athleteOption of athletes; trackBy: trackAthleteById">{{athleteOption.prenom}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.athlete?.dirty && editForm.controls.athlete?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.athlete?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.tarifceinture" for="field_tarifceinture">Tarifceinture</label>
+            <select class="form-control" id="field_tarifceinture" name="tarifceinture" [(ngModel)]="licence.tarifceinture"  required>
+                <option *ngIf="!editForm.value.tarifceinture" [ngValue]="null" selected></option>
+                <option [ngValue]="tarifCeintureOption.id === licence.tarifceinture?.id ? licence.tarifceinture : tarifCeintureOption" *ngFor="let tarifCeintureOption of tarifceintures; trackBy: trackTarifCeintureById">{{tarifCeintureOption.ceinture}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.tarifceinture?.dirty && editForm.controls.tarifceinture?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.tarifceinture?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.saison" for="field_saison">Saison</label>
+            <select class="form-control" id="field_saison" name="saison" [(ngModel)]="licence.saison"  required>
+                <option *ngIf="!editForm.value.saison" [ngValue]="null" selected></option>
+                <option [ngValue]="saisonOption.id === licence.saison?.id ? licence.saison : saisonOption" *ngFor="let saisonOption of saisons; trackBy: trackSaisonById">{{saisonOption.saison}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.saison?.dirty && editForm.controls.saison?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.saison?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

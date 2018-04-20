@@ -1,0 +1,24 @@
+
+{
+    "fsjdaApp": {
+        "saison" : {
+            "home": {
+                "title": "Saisons",
+                "createLabel": "Créer un nouveau Saison",
+                "createOrEditLabel": "Créer ou éditer un Saison"
+            },
+            "created": "Un nouveau Saison a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Saison avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Saison avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Saison {{ id }} ?"
+            },
+            "detail": {
+                "title": "Saison"
+            },
+            "saison": "Saison",
+            "dateCreation": "Date Creation",
+            "licence": "Licence"
+        }
+    }
+}

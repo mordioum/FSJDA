@@ -1,0 +1,30 @@
+
+{
+    "fsjdaApp": {
+        "ligue" : {
+            "home": {
+                "title": "Ligues",
+                "createLabel": "Créer un nouveau Ligue",
+                "createOrEditLabel": "Créer ou éditer un Ligue"
+            },
+            "created": "Un nouveau Ligue a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ligue avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ligue avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ligue {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ligue"
+            },
+            "name": "Name",
+            "president": "President",
+            "dateCreation": "Date Creation",
+            "description": "Description",
+            "adresse": "Adresse",
+            "telephone": "Telephone",
+            "email": "Email",
+            "dojoclub": "Dojoclub",
+            "discipline": "Discipline"
+        }
+    }
+}

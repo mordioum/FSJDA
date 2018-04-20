@@ -1,0 +1,62 @@
+<div>
+    <h2>
+        <span jhiTranslate="fsjdaApp.tarifCeinture.home.title">Tarif Ceintures</span>
+        <button class="btn btn-primary float-right jh-create-entity create-tarif-ceinture" [routerLink]="['/', { outlets: { popup: ['tarif-ceinture-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="fsjdaApp.tarifCeinture.home.createLabel">
+            Create new Tarif Ceinture
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tarifCeintures">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ceinture"><span jhiTranslate="fsjdaApp.tarifCeinture.ceinture">Ceinture</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.tarifCeinture.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="montant"><span jhiTranslate="fsjdaApp.tarifCeinture.montant">Montant</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let tarifCeinture of tarifCeintures ;trackBy: trackId">
+                <td><a [routerLink]="['../tarif-ceinture', tarifCeinture.id ]">{{tarifCeinture.id}}</a></td>
+                <td>{{tarifCeinture.ceinture}}</td>
+                <td>{{tarifCeinture.dateCreation | date:'mediumDate'}}</td>
+                <td>{{tarifCeinture.montant}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../tarif-ceinture', tarifCeinture.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tarif-ceinture/'+ tarifCeinture.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tarif-ceinture/'+ tarifCeinture.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

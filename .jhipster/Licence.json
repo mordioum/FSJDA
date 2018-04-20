@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "athlete",
+            "otherEntityName": "athlete",
+            "otherEntityField": "prenom"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tarifceinture",
+            "otherEntityName": "tarifCeinture",
+            "otherEntityField": "ceinture"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "saison",
+            "otherEntityName": "saison",
+            "otherEntityField": "saison"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "typeLicence",
+            "fieldType": "TypeLicence",
+            "fieldValues": "RENOUVELLEMENT,NOUVELLE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateCreation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "certificatMedical",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180420105912",
+    "entityTableName": "licence",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
