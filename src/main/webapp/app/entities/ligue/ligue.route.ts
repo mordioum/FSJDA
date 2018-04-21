@@ -31,7 +31,7 @@ export const liguePopupRoute: Routes = [
         path: 'ligue-new',
         component: LiguePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.ligue.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const liguePopupRoute: Routes = [
         path: 'ligue/:id/edit',
         component: LiguePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.ligue.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const liguePopupRoute: Routes = [
         path: 'ligue/:id/delete',
         component: LigueDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.ligue.home.title'
         },
         canActivate: [UserRouteAccessService],

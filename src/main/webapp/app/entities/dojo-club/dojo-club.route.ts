@@ -31,7 +31,7 @@ export const dojoClubPopupRoute: Routes = [
         path: 'dojo-club-new',
         component: DojoClubPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.dojoClub.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const dojoClubPopupRoute: Routes = [
         path: 'dojo-club/:id/edit',
         component: DojoClubPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.dojoClub.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const dojoClubPopupRoute: Routes = [
         path: 'dojo-club/:id/delete',
         component: DojoClubDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.dojoClub.home.title'
         },
         canActivate: [UserRouteAccessService],

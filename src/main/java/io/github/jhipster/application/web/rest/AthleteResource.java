@@ -15,6 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -99,7 +102,7 @@ public class AthleteResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/athletes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
+  
     /**
      * GET  /athletes/:id : get the "id" athlete.
      *

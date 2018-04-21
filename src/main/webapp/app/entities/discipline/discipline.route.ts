@@ -31,7 +31,7 @@ export const disciplinePopupRoute: Routes = [
         path: 'discipline-new',
         component: DisciplinePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.discipline.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const disciplinePopupRoute: Routes = [
         path: 'discipline/:id/edit',
         component: DisciplinePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.discipline.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const disciplinePopupRoute: Routes = [
         path: 'discipline/:id/delete',
         component: DisciplineDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.discipline.home.title'
         },
         canActivate: [UserRouteAccessService],

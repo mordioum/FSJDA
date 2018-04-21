@@ -31,7 +31,7 @@ export const saisonPopupRoute: Routes = [
         path: 'saison-new',
         component: SaisonPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.saison.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const saisonPopupRoute: Routes = [
         path: 'saison/:id/edit',
         component: SaisonPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.saison.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const saisonPopupRoute: Routes = [
         path: 'saison/:id/delete',
         component: SaisonDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.saison.home.title'
         },
         canActivate: [UserRouteAccessService],

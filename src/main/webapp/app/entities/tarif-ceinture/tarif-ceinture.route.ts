@@ -31,7 +31,7 @@ export const tarifCeinturePopupRoute: Routes = [
         path: 'tarif-ceinture-new',
         component: TarifCeinturePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.tarifCeinture.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const tarifCeinturePopupRoute: Routes = [
         path: 'tarif-ceinture/:id/edit',
         component: TarifCeinturePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.tarifCeinture.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const tarifCeinturePopupRoute: Routes = [
         path: 'tarif-ceinture/:id/delete',
         component: TarifCeintureDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.tarifCeinture.home.title'
         },
         canActivate: [UserRouteAccessService],
