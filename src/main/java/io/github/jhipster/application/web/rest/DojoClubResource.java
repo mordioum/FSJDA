@@ -40,6 +40,7 @@ public class DojoClubResource {
     private static final String ENTITY_NAME = "dojoClub";
 
     private final DojoClubRepository dojoClubRepository;
+    
 
     public DojoClubResource(DojoClubRepository dojoClubRepository) {
         this.dojoClubRepository = dojoClubRepository;

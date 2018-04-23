@@ -2,8 +2,10 @@ package io.github.jhipster.application.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.application.domain.Athlete;
-
 import io.github.jhipster.application.repository.AthleteRepository;
+import io.github.jhipster.application.security.AuthoritiesConstants;
+import io.github.jhipster.application.security.SecurityUtils;
+import io.github.jhipster.application.service.AthleteService;
 import io.github.jhipster.application.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.application.web.rest.util.HeaderUtil;
 import io.github.jhipster.application.web.rest.util.PaginationUtil;
@@ -16,10 +18,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -39,6 +43,10 @@ public class AthleteResource {
     private static final String ENTITY_NAME = "athlete";
 
     private final AthleteRepository athleteRepository;
+    
+    @Inject
+    private  AthleteService athleteService;
+    
 
     public AthleteResource(AthleteRepository athleteRepository) {
         this.athleteRepository = athleteRepository;
@@ -60,10 +68,20 @@ public class AthleteResource {
         }
         LocalDate today = LocalDate.now();
         athlete.setDateCreation(today);
-        Athlete result = athleteRepository.save(athlete);
-        return ResponseEntity.created(new URI("/api/athletes/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+        	 Athlete result = athleteRepository.save(athlete);
+             return ResponseEntity.created(new URI("/api/athletes/" + result.getId()))
+                 .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                 .body(result);
+        	
+        }else {
+        	athlete.setDojoclub(athleteService.getDojoClub());
+        	Athlete result = athleteRepository.save(athlete);
+            return ResponseEntity.created(new URI("/api/athletes/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
+        }
+       
     }
 
     /**
@@ -97,12 +115,36 @@ public class AthleteResource {
     @GetMapping("/athletes")
     @Timed
     public ResponseEntity<List<Athlete>> getAllAthletes(Pageable pageable) {
-        log.debug("REST request to get a page of Athletes");
-        Page<Athlete> page = athleteRepository.findAll(pageable);
+        log.debug("REST request to get a page of Athletes");       
+        Page<Athlete> page = null;
+        	if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+        		 page = athleteRepository.findAll(pageable);
+        	} else {
+        		 page = athleteRepository.findBydojoclubId(pageable,athleteService.getIdDojoClub());
+        	}  
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/athletes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-  
+    
+    /*
+    protected boolean hasRole(String role) {
+        // get security context from thread local
+        SecurityContext context = SecurityContextHolder.getContext();
+        if (context == null)
+            return false;
+
+        Authentication authentication = context.getAuthentication();
+        if (authentication == null)
+            return false;
+
+        for (GrantedAuthority auth : authentication.getAuthorities()) {
+            if (role.equals(auth.getAuthority()))
+                return true;
+        }
+
+        return false;
+    }
+  */
     /**
      * GET  /athletes/:id : get the "id" athlete.
      *

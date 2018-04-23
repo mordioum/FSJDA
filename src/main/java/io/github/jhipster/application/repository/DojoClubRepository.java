@@ -16,5 +16,8 @@ public interface DojoClubRepository extends JpaRepository<DojoClub, Long> {
 	
 	@Query("select dojoclub from DojoClub dojoclub where dojoclub.user.login = ?#{principal.username}")
 	Page<DojoClub> findByUserIsCurrentUser(Pageable pageable);
+	
+	@Query("select dojoclub from DojoClub dojoclub where dojoclub.user.login = ?#{principal.username}")
+	DojoClub findByUserIsCurrentUserService();
 
 }

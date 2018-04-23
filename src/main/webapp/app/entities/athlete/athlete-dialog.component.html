@@ -107,8 +107,9 @@
                 </small>
             </div>
         </div>
-
-        <div class="form-group">
+		
+		<div  *jhiHasAnyAuthority="'ROLE_ADMIN'">
+        <div class="form-group" >
             <label class="form-control-label" jhiTranslate="fsjdaApp.athlete.dojoclub" for="field_dojoclub">Dojoclub</label>
             <select class="form-control" id="field_dojoclub" name="dojoclub" [(ngModel)]="athlete.dojoclub"  required>
                 <option *ngIf="!editForm.value.dojoclub" [ngValue]="null" selected></option>
@@ -120,6 +121,7 @@
                 [hidden]="!editForm.controls.dojoclub?.errors?.required" jhiTranslate="entity.validation.required">
                 This field is required.
             </small>
+        </div>
         </div>
     </div>
     <div class="modal-footer">

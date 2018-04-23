@@ -71,7 +71,6 @@ public class Athlete implements Serializable {
     private Set<Licence> licences = new HashSet<>();
 
     @ManyToOne(optional = false)
-    @NotNull
     private DojoClub dojoclub;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
