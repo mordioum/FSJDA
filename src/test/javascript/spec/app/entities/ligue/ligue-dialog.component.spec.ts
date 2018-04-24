@@ -9,6 +9,7 @@ import { FsjdaTestModule } from '../../../test.module';
 import { LigueDialogComponent } from '../../../../../../main/webapp/app/entities/ligue/ligue-dialog.component';
 import { LigueService } from '../../../../../../main/webapp/app/entities/ligue/ligue.service';
 import { Ligue } from '../../../../../../main/webapp/app/entities/ligue/ligue.model';
+import { UserService } from '../../../../../../main/webapp/app/shared';
 import { DisciplineService } from '../../../../../../main/webapp/app/entities/discipline';
 
 describe('Component Tests', () => {
@@ -25,6 +26,7 @@ describe('Component Tests', () => {
                 imports: [FsjdaTestModule],
                 declarations: [LigueDialogComponent],
                 providers: [
+                    UserService,
                     DisciplineService,
                     LigueService
                 ]

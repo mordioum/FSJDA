@@ -80,6 +80,13 @@
         </div>
 
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="ligue.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === ligue.user?.id ? ligue.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="fsjdaApp.ligue.discipline" for="field_discipline">Discipline</label>
             <select class="form-control" id="field_discipline" name="discipline" [(ngModel)]="ligue.discipline"  required>
                 <option *ngIf="!editForm.value.discipline" [ngValue]="null" selected></option>

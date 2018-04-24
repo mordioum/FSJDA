@@ -20,4 +20,6 @@ public interface DojoClubRepository extends JpaRepository<DojoClub, Long> {
 	@Query("select dojoclub from DojoClub dojoclub where dojoclub.user.login = ?#{principal.username}")
 	DojoClub findByUserIsCurrentUserService();
 
+	Page<DojoClub> findByligueId(Pageable pageable, long id);
+
 }

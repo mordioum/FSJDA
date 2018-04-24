@@ -11,7 +11,7 @@ export const saisonRoute: Routes = [
         path: 'saison',
         component: SaisonComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.saison.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const saisonRoute: Routes = [
         path: 'saison/:id',
         component: SaisonDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.saison.home.title'
         },
         canActivate: [UserRouteAccessService]

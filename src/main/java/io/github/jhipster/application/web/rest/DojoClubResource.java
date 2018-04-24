@@ -4,6 +4,9 @@ import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.application.domain.DojoClub;
 
 import io.github.jhipster.application.repository.DojoClubRepository;
+import io.github.jhipster.application.security.AuthoritiesConstants;
+import io.github.jhipster.application.security.SecurityUtils;
+import io.github.jhipster.application.service.LigueService;
 import io.github.jhipster.application.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.application.web.rest.util.HeaderUtil;
 import io.github.jhipster.application.web.rest.util.PaginationUtil;
@@ -21,6 +24,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -40,6 +44,9 @@ public class DojoClubResource {
     private static final String ENTITY_NAME = "dojoClub";
 
     private final DojoClubRepository dojoClubRepository;
+    
+    @Inject
+    private LigueService ligueService;
     
 
     public DojoClubResource(DojoClubRepository dojoClubRepository) {
@@ -101,33 +108,16 @@ public class DojoClubResource {
     public ResponseEntity<List<DojoClub>> getAllDojoClubs(Pageable pageable) {
         log.debug("REST request to get a page of DojoClubs");
         Page<DojoClub> page = null;
-        if(hasRole("ROLE_USER")) {
-        	page = dojoClubRepository.findByUserIsCurrentUser(pageable);
-        }
-        if(hasRole("ROLE_ADMIN")) {
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN))
+        {
         	page = dojoClubRepository.findAll(pageable);
-        }
+        }else if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.DOJOCLUB)) {
+        	page = dojoClubRepository.findByUserIsCurrentUser(pageable);
+        }else if(SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.LIGUE)) {
+        	page = dojoClubRepository.findByligueId(pageable,ligueService.getIdLigue());
+        }        
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/dojo-clubs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
-    
-    
-    protected boolean hasRole(String role) {
-        // get security context from thread local
-        SecurityContext context = SecurityContextHolder.getContext();
-        if (context == null)
-            return false;
-
-        Authentication authentication = context.getAuthentication();
-        if (authentication == null)
-            return false;
-
-        for (GrantedAuthority auth : authentication.getAuthorities()) {
-            if (role.equals(auth.getAuthority()))
-                return true;
-        }
-
-        return false;
     }
     
 

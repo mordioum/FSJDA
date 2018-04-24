@@ -11,7 +11,7 @@ export const tarifCeintureRoute: Routes = [
         path: 'tarif-ceinture',
         component: TarifCeintureComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.tarifCeinture.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const tarifCeintureRoute: Routes = [
         path: 'tarif-ceinture/:id',
         component: TarifCeintureDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.tarifCeinture.home.title'
         },
         canActivate: [UserRouteAccessService]

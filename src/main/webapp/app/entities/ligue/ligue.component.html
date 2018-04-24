@@ -24,6 +24,7 @@
             <th jhiSortBy="adresse"><span jhiTranslate="fsjdaApp.ligue.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="telephone"><span jhiTranslate="fsjdaApp.ligue.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="email"><span jhiTranslate="fsjdaApp.ligue.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="fsjdaApp.ligue.user">User</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="discipline.name"><span jhiTranslate="fsjdaApp.ligue.discipline">Discipline</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -38,6 +39,9 @@
                 <td>{{ligue.adresse}}</td>
                 <td>{{ligue.telephone}}</td>
                 <td>{{ligue.email}}</td>
+                <td>
+                    {{ligue.user?.login}}
+                </td>
                 <td>
                     <div *ngIf="ligue.discipline">
                         <a [routerLink]="['../discipline', ligue.discipline?.id ]" >{{ligue.discipline?.name}}</a>

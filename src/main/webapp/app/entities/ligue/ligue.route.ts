@@ -11,7 +11,7 @@ export const ligueRoute: Routes = [
         path: 'ligue',
         component: LigueComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.ligue.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const ligueRoute: Routes = [
         path: 'ligue/:id',
         component: LigueDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.ligue.home.title'
         },
         canActivate: [UserRouteAccessService]

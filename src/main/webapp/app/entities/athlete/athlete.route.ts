@@ -11,7 +11,7 @@ export const athleteRoute: Routes = [
         path: 'athlete',
         component: AthleteComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.athlete.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const athleteRoute: Routes = [
         path: 'athlete/:id',
         component: AthleteDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.athlete.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const athletePopupRoute: Routes = [
         path: 'athlete-new',
         component: AthletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB'],
             pageTitle: 'fsjdaApp.athlete.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const athletePopupRoute: Routes = [
         path: 'athlete/:id/edit',
         component: AthletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB'],
             pageTitle: 'fsjdaApp.athlete.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const athletePopupRoute: Routes = [
         path: 'athlete/:id/delete',
         component: AthleteDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB'],
             pageTitle: 'fsjdaApp.athlete.home.title'
         },
         canActivate: [UserRouteAccessService],

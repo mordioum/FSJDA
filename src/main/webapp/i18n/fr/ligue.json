@@ -24,6 +24,7 @@
             "telephone": "Telephone",
             "email": "Email",
             "dojoclub": "Dojoclub",
+            "user": "User",
             "discipline": "Discipline"
         }
     }

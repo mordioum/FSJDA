@@ -11,7 +11,7 @@ export const licenceRoute: Routes = [
         path: 'licence',
         component: LicenceComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.licence.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const licenceRoute: Routes = [
         path: 'licence/:id',
         component: LicenceDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.licence.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const licencePopupRoute: Routes = [
         path: 'licence-new',
         component: LicencePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB'],
             pageTitle: 'fsjdaApp.licence.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const licencePopupRoute: Routes = [
         path: 'licence/:id/edit',
         component: LicencePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB'],
             pageTitle: 'fsjdaApp.licence.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const licencePopupRoute: Routes = [
         path: 'licence/:id/delete',
         component: LicenceDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB'],
             pageTitle: 'fsjdaApp.licence.home.title'
         },
         canActivate: [UserRouteAccessService],

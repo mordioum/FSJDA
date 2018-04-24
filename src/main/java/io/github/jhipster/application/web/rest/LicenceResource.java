@@ -4,6 +4,9 @@ import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.application.domain.Licence;
 
 import io.github.jhipster.application.repository.LicenceRepository;
+import io.github.jhipster.application.security.AuthoritiesConstants;
+import io.github.jhipster.application.security.SecurityUtils;
+import io.github.jhipster.application.service.LicenceService;
 import io.github.jhipster.application.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.application.web.rest.util.HeaderUtil;
 import io.github.jhipster.application.web.rest.util.PaginationUtil;
@@ -17,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,6 +40,9 @@ public class LicenceResource {
     private static final String ENTITY_NAME = "licence";
 
     private final LicenceRepository licenceRepository;
+    
+    @Inject
+    private LicenceService licenceService;
 
     public LicenceResource(LicenceRepository licenceRepository) {
         this.licenceRepository = licenceRepository;
@@ -95,7 +102,13 @@ public class LicenceResource {
     @Timed
     public ResponseEntity<List<Licence>> getAllLicences(Pageable pageable) {
         log.debug("REST request to get a page of Licences");
-        Page<Licence> page = licenceRepository.findAll(pageable);
+        Page<Licence> page = null;
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+        		page = licenceRepository.findAll(pageable);
+        }else {
+        	    page = licenceRepository.findByathleteDojoclubId(pageable, licenceService.getIdDojoClub());
+            
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/licences");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

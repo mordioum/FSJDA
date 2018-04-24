@@ -11,7 +11,7 @@ export const dojoClubRoute: Routes = [
         path: 'dojo-club',
         component: DojoClubComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_DOJOCLUB', 'ROLE_LIGUE', 'ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.dojoClub.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const dojoClubRoute: Routes = [
         path: 'dojo-club/:id',
         component: DojoClubDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_DOJOCLUB', 'ROLE_LIGUE', 'ROLE_ADMIN'],
             pageTitle: 'fsjdaApp.dojoClub.home.title'
         },
         canActivate: [UserRouteAccessService]

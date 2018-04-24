@@ -73,7 +73,7 @@ relationship OneToMany{
 
 relationship ManyToOne {
   DojoClub{user(login)} to User,
-  Athlete{user(login)}  to User
+  Ligue{user(login)}  to User
 }
 
 paginate Discipline, Ligue, DojoClub, Athlete, TarifCeinture, Licence, Saison   with infinite-scroll

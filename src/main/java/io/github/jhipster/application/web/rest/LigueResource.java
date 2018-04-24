@@ -4,6 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.application.domain.Ligue;
 
 import io.github.jhipster.application.repository.LigueRepository;
+import io.github.jhipster.application.security.AuthoritiesConstants;
+import io.github.jhipster.application.security.SecurityUtils;
 import io.github.jhipster.application.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.application.web.rest.util.HeaderUtil;
 import io.github.jhipster.application.web.rest.util.PaginationUtil;
@@ -95,7 +97,12 @@ public class LigueResource {
     @Timed
     public ResponseEntity<List<Ligue>> getAllLigues(Pageable pageable) {
         log.debug("REST request to get a page of Ligues");
-        Page<Ligue> page = ligueRepository.findAll(pageable);
+        Page<Ligue> page = null;
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+        		page = ligueRepository.findAll(pageable);
+        }else {     
+        		page = ligueRepository.findByUserIsCurrentUser(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/ligues");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

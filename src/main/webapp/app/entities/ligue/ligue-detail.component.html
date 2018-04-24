@@ -32,6 +32,10 @@
         <dd>
             <span>{{ligue.email}}</span>
         </dd>
+        <dt><span jhiTranslate="fsjdaApp.ligue.user">User</span></dt>
+        <dd>
+            {{ligue.user?.login}}
+        </dd>
         <dt><span jhiTranslate="fsjdaApp.ligue.discipline">Discipline</span></dt>
         <dd>
             <div *ngIf="ligue.discipline">
@@ -46,7 +50,7 @@
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button"  *jhiHasAnyAuthority="'ROLE_ADMIN'"
+    <button type="button"
             [routerLink]="['/', { outlets: { popup: 'ligue/'+ ligue.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"

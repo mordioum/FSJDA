@@ -11,7 +11,7 @@ export const disciplineRoute: Routes = [
         path: 'discipline',
         component: DisciplineComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.discipline.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const disciplineRoute: Routes = [
         path: 'discipline/:id',
         component: DisciplineDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN', 'ROLE_DOJOCLUB', 'ROLE_LIGUE'],
             pageTitle: 'fsjdaApp.discipline.home.title'
         },
         canActivate: [UserRouteAccessService]

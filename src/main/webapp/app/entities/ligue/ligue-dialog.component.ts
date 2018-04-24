@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Ligue } from './ligue.model';
 import { LiguePopupService } from './ligue-popup.service';
 import { LigueService } from './ligue.service';
+import { User, UserService } from '../../shared';
 import { Discipline, DisciplineService } from '../discipline';
 
 @Component({
@@ -20,6 +21,8 @@ export class LigueDialogComponent implements OnInit {
     ligue: Ligue;
     isSaving: boolean;
 
+    users: User[];
+
     disciplines: Discipline[];
     dateCreationDp: any;
 
@@ -27,6 +30,7 @@ export class LigueDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private ligueService: LigueService,
+        private userService: UserService,
         private disciplineService: DisciplineService,
         private eventManager: JhiEventManager
     ) {
@@ -34,6 +38,8 @@ export class LigueDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.userService.query()
+            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.disciplineService.query()
             .subscribe((res: HttpResponse<Discipline[]>) => { this.disciplines = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -70,6 +76,10 @@ export class LigueDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackUserById(index: number, item: User) {
+        return item.id;
     }
 
     trackDisciplineById(index: number, item: Discipline) {
