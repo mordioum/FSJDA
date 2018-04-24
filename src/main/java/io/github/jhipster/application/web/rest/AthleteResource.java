@@ -6,6 +6,7 @@ import io.github.jhipster.application.repository.AthleteRepository;
 import io.github.jhipster.application.security.AuthoritiesConstants;
 import io.github.jhipster.application.security.SecurityUtils;
 import io.github.jhipster.application.service.AthleteService;
+import io.github.jhipster.application.service.LigueService;
 import io.github.jhipster.application.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.application.web.rest.util.HeaderUtil;
 import io.github.jhipster.application.web.rest.util.PaginationUtil;
@@ -46,6 +47,9 @@ public class AthleteResource {
     
     @Inject
     private  AthleteService athleteService;
+    
+    @Inject
+    private  LigueService ligueService;
     
 
     public AthleteResource(AthleteRepository athleteRepository) {
@@ -119,9 +123,11 @@ public class AthleteResource {
         Page<Athlete> page = null;
         	if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
         		 page = athleteRepository.findAll(pageable);
-        	} else {
+        	} else if(SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.DOJOCLUB)) {
         		 page = athleteRepository.findBydojoclubId(pageable,athleteService.getIdDojoClub());
-        	}  
+        	}else if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.LIGUE)) {
+        		page = athleteRepository.findBydojoclubLigueId(pageable,ligueService.getIdLigue());
+        	}
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/athletes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

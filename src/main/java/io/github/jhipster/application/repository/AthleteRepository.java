@@ -20,5 +20,7 @@ import io.github.jhipster.application.domain.User;
 public interface AthleteRepository extends JpaRepository<Athlete, Long> {
 
 	Page<Athlete> findBydojoclubId(Pageable pageable,long id);
+	
+	Page<Athlete> findBydojoclubLigueId(Pageable pageable,long id);
 
 }

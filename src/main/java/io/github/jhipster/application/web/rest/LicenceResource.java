@@ -7,6 +7,7 @@ import io.github.jhipster.application.repository.LicenceRepository;
 import io.github.jhipster.application.security.AuthoritiesConstants;
 import io.github.jhipster.application.security.SecurityUtils;
 import io.github.jhipster.application.service.LicenceService;
+import io.github.jhipster.application.service.LigueService;
 import io.github.jhipster.application.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.application.web.rest.util.HeaderUtil;
 import io.github.jhipster.application.web.rest.util.PaginationUtil;
@@ -44,6 +45,9 @@ public class LicenceResource {
     @Inject
     private LicenceService licenceService;
 
+    @Inject
+    private  LigueService ligueService;
+    
     public LicenceResource(LicenceRepository licenceRepository) {
         this.licenceRepository = licenceRepository;
     }
@@ -105,9 +109,10 @@ public class LicenceResource {
         Page<Licence> page = null;
         if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
         		page = licenceRepository.findAll(pageable);
-        }else {
+        }else if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.DOJOCLUB)) {
         	    page = licenceRepository.findByathleteDojoclubId(pageable, licenceService.getIdDojoClub());
-            
+        }else if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.LIGUE)) {
+    	    page = licenceRepository.findByathleteDojoclubLigueId(pageable, ligueService.getIdLigue());
         }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/licences");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);

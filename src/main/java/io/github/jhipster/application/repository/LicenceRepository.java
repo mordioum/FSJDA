@@ -15,5 +15,7 @@ import org.springframework.data.jpa.repository.*;
 public interface LicenceRepository extends JpaRepository<Licence, Long> {
 
 	Page<Licence> findByathleteDojoclubId(Pageable pageable, Long id);
+	
+	Page<Licence> findByathleteDojoclubLigueId(Pageable pageable, Long id);
 
 }
