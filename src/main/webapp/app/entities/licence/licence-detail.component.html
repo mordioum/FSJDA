@@ -3,50 +3,54 @@
     <h2><span jhiTranslate="fsjdaApp.licence.detail.title">Licence</span> {{licence.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="fsjdaApp.licence.typeLicence">Type Licence</span></dt>
+    <table class="table table-striped">
+    	<dl class="row-md jh-entity-details">
+    		<tbody>
+    			<tr>
+    				<td>
+      					<dd>
+            				<div *ngIf="licence.photo">
+                				<a (click)="openFile(licence.photoContentType, licence.photo)">
+                    			<img [src]="'data:' + licence.photoContentType + ';base64,' + licence.photo" style="max-width: 100%;" alt="licence image"/>
+                				</a>
+            				</div>
+        				</dd>
+        			</td>
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.licence.typeLicence">Type Licence</span></dt></th>
+      				<td><dd><span jhiTranslate="{{'fsjdaApp.TypeLicence.' + licence.typeLicence}}">{{licence.typeLicence}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.licence.dateCreation">Date Creation</span></dt></th>
+      				<td><dd><span>{{licence.dateCreation | date:'mediumDate'}}</span></dd></td>
+      				
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.licence.certificatMedical">Certificat Medical</span></dt></th>
+      				<td><dd><div *ngIf="licence.certificatMedical"><a (click)="openFile(licence.certificatMedicalContentType, licence.certificatMedical)" jhiTranslate="entity.action.open">open</a>
+                				{{licence.certificatMedicalContentType}}, {{byteSize(licence.certificatMedical)}}
+            				</div>
+        				</dd>
+        			</td>
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.licence.tarifceinture">Tarifceinture</span></dt></th>
+      				<td><dd><div *ngIf="licence.tarifceinture"><a [routerLink]="['/tarif-ceinture', licence.tarifceinture?.id]">{{licence.tarifceinture?.ceinture}}</a></div></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.licence.saison">Saison</span></dt></th>
+      				<td><dd><div *ngIf="licence.saison"><a [routerLink]="['/saison', licence.saison?.id]">{{licence.saison?.saison}}</a></div></dd></td>
+      				
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.licence.athlete">Athlete</span></dt></th>
+      				<td><dd><div *ngIf="licence.athlete"><a [routerLink]="['/athlete', licence.athlete?.id]">{{licence.athlete?.prenom}}</a></div></dd></td>
+      			</tr>
+      		</tbody>
+        </dl>
+      </table>
+          <!--  
+        <dt><span jhiTranslate="fsjdaApp.licence.licenceAnterieur">Licence Anterieur</span></dt>
         <dd>
-            <span jhiTranslate="{{'fsjdaApp.TypeLicence.' + licence.typeLicence}}">{{licence.typeLicence}}</span>
+            <span>{{licence.licenceAnterieur}}</span>
         </dd>
-        <dt><span jhiTranslate="fsjdaApp.licence.dateCreation">Date Creation</span></dt>
-        <dd>
-            <span>{{licence.dateCreation | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.licence.photo">Photo</span></dt>
-        <dd>
-            <div *ngIf="licence.photo">
-                <a (click)="openFile(licence.photoContentType, licence.photo)">
-                    <img [src]="'data:' + licence.photoContentType + ';base64,' + licence.photo" style="max-width: 100%;" alt="licence image"/>
-                </a>
-                {{licence.photoContentType}}, {{byteSize(licence.photo)}}
-            </div>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.licence.certificatMedical">Certificat Medical</span></dt>
-        <dd>
-            <div *ngIf="licence.certificatMedical">
-                <a (click)="openFile(licence.certificatMedicalContentType, licence.certificatMedical)" jhiTranslate="entity.action.open">open</a>
-                {{licence.certificatMedicalContentType}}, {{byteSize(licence.certificatMedical)}}
-            </div>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.licence.athlete">Athlete</span></dt>
-        <dd>
-            <div *ngIf="licence.athlete">
-                <a [routerLink]="['/athlete', licence.athlete?.id]">{{licence.athlete?.prenom}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.licence.tarifceinture">Tarifceinture</span></dt>
-        <dd>
-            <div *ngIf="licence.tarifceinture">
-                <a [routerLink]="['/tarif-ceinture', licence.tarifceinture?.id]">{{licence.tarifceinture?.ceinture}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.licence.saison">Saison</span></dt>
-        <dd>
-            <div *ngIf="licence.saison">
-                <a [routerLink]="['/saison', licence.saison?.id]">{{licence.saison?.saison}}</a>
-            </div>
-        </dd>
-    </dl>
+        -->        
+    
 
     <button type="submit"
             (click)="previousState()"

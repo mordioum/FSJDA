@@ -3,46 +3,44 @@
     <h2><span jhiTranslate="fsjdaApp.ligue.detail.title">Ligue</span> {{ligue.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="fsjdaApp.ligue.name">Name</span></dt>
-        <dd>
-            <span>{{ligue.name}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.president">President</span></dt>
-        <dd>
-            <span>{{ligue.president}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.dateCreation">Date Creation</span></dt>
-        <dd>
-            <span>{{ligue.dateCreation | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.description">Description</span></dt>
-        <dd>
-            <span>{{ligue.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.adresse">Adresse</span></dt>
-        <dd>
-            <span>{{ligue.adresse}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.telephone">Telephone</span></dt>
-        <dd>
-            <span>{{ligue.telephone}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.email">Email</span></dt>
-        <dd>
-            <span>{{ligue.email}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.user">User</span></dt>
-        <dd>
-            {{ligue.user?.login}}
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.ligue.discipline">Discipline</span></dt>
-        <dd>
-            <div *ngIf="ligue.discipline">
-                <a [routerLink]="['/discipline', ligue.discipline?.id]">{{ligue.discipline?.name}}</a>
-            </div>
-        </dd>
-    </dl>
+    
+    <table class="table table-striped">
+      <dl class="row-md jh-entity-details">
+    	<tbody>
+    		<tr>
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.name">Name</span></dt></th>
+      			<td><dd><span>{{ligue.name}}</span></dd></td>
+      			
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.adresse">Adresse</span></dt></th>
+      			<td><dd><span>{{ligue.adresse}}</span></dd></td>
+      			
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.discipline">Discipline</span></dt></th>
+      			<td><dd><div *ngIf="ligue.discipline"><a [routerLink]="['/discipline', ligue.discipline?.id]">{{ligue.discipline?.name}}</a></div></dd></td> 
+      		</tr>
+      		<tr>
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.president">President</span></dt></th>
+      			<td><dd><span>{{ligue.president}}</span></dd></td>
+      			
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.telephone">Telephone</span></dt></th>
+      			<td><dd><span>{{ligue.telephone}}</span></dd></td>
+      		</tr>
+      		<tr>
+      			<th scope="row"> <dt><span jhiTranslate="fsjdaApp.ligue.dateCreation">Date Creation</span></dt></th>
+      			<td><dd><span>{{ligue.dateCreation | date:'mediumDate'}}</span></dd></td>
+      			
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.email">Email</span></dt></th>
+      			<td><dd><span>{{ligue.email}}</span></dd></td>
+      		</tr>
+      		<tr>
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.description">Description</span></dt></th>
+      			<td><dd><span>{{ligue.description}}</span></dd></td>
+      			
+      			<th scope="row"><dt><span jhiTranslate="fsjdaApp.ligue.user">User</span></dt></th>
+      			<td><dd>{{ligue.user?.login}}</dd></td>
+      		</tr>
+    	</tbody>
+    	</dl>
+    </table>
 
     <button type="submit"
             (click)="previousState()"

@@ -17,6 +17,6 @@
     <include file="config/liquibase/changelog/20180420105909_added_entity_constraints_DojoClub.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180420105910_added_entity_constraints_Athlete.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180420105912_added_entity_constraints_Licence.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180424155641_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180425123555_changelog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

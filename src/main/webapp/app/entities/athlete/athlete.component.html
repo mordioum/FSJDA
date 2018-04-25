@@ -19,13 +19,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="nom"><span jhiTranslate="fsjdaApp.athlete.nom">Nom</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="prenom"><span jhiTranslate="fsjdaApp.athlete.prenom">Prenom</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.athlete.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sexe"><span jhiTranslate="fsjdaApp.athlete.sexe">Sexe</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateNaissance"><span jhiTranslate="fsjdaApp.athlete.dateNaissance">Date Naissance</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lieuNaissance"><span jhiTranslate="fsjdaApp.athlete.lieuNaissance">Lieu Naissance</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="adresse"><span jhiTranslate="fsjdaApp.athlete.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="telephone"><span jhiTranslate="fsjdaApp.athlete.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="email"><span jhiTranslate="fsjdaApp.athlete.email">Email</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dojoclub.name"><span jhiTranslate="fsjdaApp.athlete.dojoclub">Dojoclub</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -35,13 +29,7 @@
                 <td><a [routerLink]="['../athlete', athlete.id ]">{{athlete.id}}</a></td>
                 <td>{{athlete.nom}}</td>
                 <td>{{athlete.prenom}}</td>
-                <td>{{athlete.dateCreation | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'fsjdaApp.Sexe.' + athlete.sexe}}">{{athlete.sexe}}</td>
-                <td>{{athlete.dateNaissance | date:'mediumDate'}}</td>
-                <td>{{athlete.lieuNaissance}}</td>
-                <td>{{athlete.adresse}}</td>
-                <td>{{athlete.telephone}}</td>
-                <td>{{athlete.email}}</td>
                 <td>
                     <div *ngIf="athlete.dojoclub">
                         <a [routerLink]="['../dojo-club', athlete.dojoclub?.id ]" >{{athlete.dojoclub?.name}}</a>

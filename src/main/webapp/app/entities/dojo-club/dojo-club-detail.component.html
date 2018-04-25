@@ -3,46 +3,43 @@
     <h2><span jhiTranslate="fsjdaApp.dojoClub.detail.title">Dojo Club</span> {{dojoClub.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.name">Name</span></dt>
-        <dd>
-            <span>{{dojoClub.name}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.president">President</span></dt>
-        <dd>
-            <span>{{dojoClub.president}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.dateCreation">Date Creation</span></dt>
-        <dd>
-            <span>{{dojoClub.dateCreation | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.description">Description</span></dt>
-        <dd>
-            <span>{{dojoClub.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.adresse">Adresse</span></dt>
-        <dd>
-            <span>{{dojoClub.adresse}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.telephone">Telephone</span></dt>
-        <dd>
-            <span>{{dojoClub.telephone}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.email">Email</span></dt>
-        <dd>
-            <span>{{dojoClub.email}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.user">User</span></dt>
-        <dd>
-            {{dojoClub.user?.login}}
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.dojoClub.ligue">Ligue</span></dt>
-        <dd>
-            <div *ngIf="dojoClub.ligue">
-                <a [routerLink]="['/ligue', dojoClub.ligue?.id]">{{dojoClub.ligue?.name}}</a>
-            </div>
-        </dd>
+    <table class="table table-striped">
+    	<dl class="row-md jh-entity-details">
+    		<tbody>
+    			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.name">Name</span></dt></th>
+      				<td><dd><span>{{dojoClub.name}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.president">President</span></dt></th>
+      				<td><dd><span>{{dojoClub.president}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.dateCreation">Date Creation</span></dt></th>
+      				<td><dd><span>{{dojoClub.dateCreation | date:'mediumDate'}}</span></dd></td> 
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.description">Description</span></dt></th>
+      				<td><dd><span>{{dojoClub.description}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.adresse">Adresse</span></dt></th>
+      				<td><dd><span>{{dojoClub.adresse}}</span></dd></td>
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.telephone">Telephone</span></dt></th>
+      				<td><dd><span>{{dojoClub.telephone}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.email">Email</span></dt></th>
+      				<td><dd><span>{{dojoClub.email}}</span></dd></td>
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.user">User</span></dt></th>
+      				<td><dd>{{dojoClub.user?.login}}</dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.dojoClub.ligue">Ligue</span></dt></th>
+      				<td><dd><div *ngIf="dojoClub.ligue"><a [routerLink]="['/ligue', dojoClub.ligue?.id]">{{dojoClub.ligue?.name}}</a></div></dd></td>
+      			</tr>
+    	</tbody>
     </dl>
+   </table>
 
     <button type="submit"
             (click)="previousState()"

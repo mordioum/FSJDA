@@ -50,6 +50,9 @@ public class Licence implements Serializable {
     @Column(name = "certificat_medical_content_type", nullable = false)
     private String certificatMedicalContentType;
 
+    @Column(name = "licence_anterieur")
+    private Long licenceAnterieur;
+
     @ManyToOne(optional = false)
     @NotNull
     private Athlete athlete;
@@ -149,6 +152,19 @@ public class Licence implements Serializable {
         this.certificatMedicalContentType = certificatMedicalContentType;
     }
 
+    public Long getLicenceAnterieur() {
+        return licenceAnterieur;
+    }
+
+    public Licence licenceAnterieur(Long licenceAnterieur) {
+        this.licenceAnterieur = licenceAnterieur;
+        return this;
+    }
+
+    public void setLicenceAnterieur(Long licenceAnterieur) {
+        this.licenceAnterieur = licenceAnterieur;
+    }
+
     public Athlete getAthlete() {
         return athlete;
     }
@@ -219,6 +235,7 @@ public class Licence implements Serializable {
             ", photoContentType='" + getPhotoContentType() + "'" +
             ", certificatMedical='" + getCertificatMedical() + "'" +
             ", certificatMedicalContentType='" + getCertificatMedicalContentType() + "'" +
+            ", licenceAnterieur=" + getLicenceAnterieur() +
             "}";
     }
 }

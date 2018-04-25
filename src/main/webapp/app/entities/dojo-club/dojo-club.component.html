@@ -19,11 +19,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="fsjdaApp.dojoClub.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="president"><span jhiTranslate="fsjdaApp.dojoClub.president">President</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.dojoClub.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="description"><span jhiTranslate="fsjdaApp.dojoClub.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="adresse"><span jhiTranslate="fsjdaApp.dojoClub.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="telephone"><span jhiTranslate="fsjdaApp.dojoClub.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="email"><span jhiTranslate="fsjdaApp.dojoClub.email">Email</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="user.login"><span jhiTranslate="fsjdaApp.dojoClub.user">User</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="ligue.name"><span jhiTranslate="fsjdaApp.dojoClub.ligue">Ligue</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -34,11 +31,8 @@
                 <td><a [routerLink]="['../dojo-club', dojoClub.id ]">{{dojoClub.id}}</a></td>
                 <td>{{dojoClub.name}}</td>
                 <td>{{dojoClub.president}}</td>
-                <td>{{dojoClub.dateCreation | date:'mediumDate'}}</td>
-                <td>{{dojoClub.description}}</td>
                 <td>{{dojoClub.adresse}}</td>
                 <td>{{dojoClub.telephone}}</td>
-                <td>{{dojoClub.email}}</td>
                 <td>
                     {{dojoClub.user?.login}}
                 </td>

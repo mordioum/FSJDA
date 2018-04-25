@@ -19,11 +19,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="fsjdaApp.ligue.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="president"><span jhiTranslate="fsjdaApp.ligue.president">President</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateCreation"><span jhiTranslate="fsjdaApp.ligue.dateCreation">Date Creation</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="description"><span jhiTranslate="fsjdaApp.ligue.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="adresse"><span jhiTranslate="fsjdaApp.ligue.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="telephone"><span jhiTranslate="fsjdaApp.ligue.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="email"><span jhiTranslate="fsjdaApp.ligue.email">Email</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="user.login"><span jhiTranslate="fsjdaApp.ligue.user">User</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="discipline.name"><span jhiTranslate="fsjdaApp.ligue.discipline">Discipline</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -34,11 +31,8 @@
                 <td><a [routerLink]="['../ligue', ligue.id ]">{{ligue.id}}</a></td>
                 <td>{{ligue.name}}</td>
                 <td>{{ligue.president}}</td>
-                <td>{{ligue.dateCreation | date:'mediumDate'}}</td>
-                <td>{{ligue.description}}</td>
                 <td>{{ligue.adresse}}</td>
                 <td>{{ligue.telephone}}</td>
-                <td>{{ligue.email}}</td>
                 <td>
                     {{ligue.user?.login}}
                 </td>

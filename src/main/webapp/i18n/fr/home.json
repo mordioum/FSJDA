@@ -1,7 +1,7 @@
 {
     "home": {
-        "title": "Bienvenue, Java Hipster !",
-        "subtitle": "Ceci est votre page d'accueil",
+        "title": "Fédération Sénégalaise de Judo et Disciplines Associées !",
+        "subtitle": "Rassembler tous les judokas sénégalais et de la diaspora afin d'oeuvrer pour la bonne marche du judo sénégalais.",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },

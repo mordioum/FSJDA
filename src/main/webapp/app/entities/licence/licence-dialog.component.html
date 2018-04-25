@@ -25,6 +25,13 @@
                 </small>
             </div>
         </div>
+    <!--
+      	<div class="form-group">
+            <label class="form-control-label" jhiTranslate="fsjdaApp.licence.licenceAnterieur" for="field_licenceAnterieur">Licence Anterieur</label>
+            <input type="number" class="form-control" name="licenceAnterieur" id="field_licenceAnterieur"
+                [(ngModel)]="licence.licenceAnterieur" />
+       	</div>
+          -->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="fsjdaApp.licence.photo" for="field_photo">Photo</label>
             <div>
@@ -72,7 +79,6 @@
                 </small>
             </div>
         </div>
-
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="fsjdaApp.licence.athlete" for="field_athlete">Athlete</label>
             <select class="form-control" id="field_athlete" name="athlete" [(ngModel)]="licence.athlete"  required>

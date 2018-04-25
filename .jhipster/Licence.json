@@ -51,12 +51,16 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "licenceAnterieur",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20180420105912",
-    "entityTableName": "licence",
     "dto": "no",
-    "pagination": "infinite-scroll",
     "service": "no",
-    "jpaMetamodelFiltering": false
+    "entityTableName": "licence",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
 }

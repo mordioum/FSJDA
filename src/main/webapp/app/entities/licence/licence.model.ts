@@ -14,6 +14,7 @@ export class Licence implements BaseEntity {
         public photo?: any,
         public certificatMedicalContentType?: string,
         public certificatMedical?: any,
+        public licenceAnterieur?: number,
         public athlete?: BaseEntity,
         public tarifceinture?: BaseEntity,
         public saison?: BaseEntity,

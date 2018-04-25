@@ -3,50 +3,46 @@
     <h2><span jhiTranslate="fsjdaApp.athlete.detail.title">Athlete</span> {{athlete.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="fsjdaApp.athlete.nom">Nom</span></dt>
-        <dd>
-            <span>{{athlete.nom}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.prenom">Prenom</span></dt>
-        <dd>
-            <span>{{athlete.prenom}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.dateCreation">Date Creation</span></dt>
-        <dd>
-            <span>{{athlete.dateCreation | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.sexe">Sexe</span></dt>
-        <dd>
-            <span jhiTranslate="{{'fsjdaApp.Sexe.' + athlete.sexe}}">{{athlete.sexe}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.dateNaissance">Date Naissance</span></dt>
-        <dd>
-            <span>{{athlete.dateNaissance | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.lieuNaissance">Lieu Naissance</span></dt>
-        <dd>
-            <span>{{athlete.lieuNaissance}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.adresse">Adresse</span></dt>
-        <dd>
-            <span>{{athlete.adresse}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.telephone">Telephone</span></dt>
-        <dd>
-            <span>{{athlete.telephone}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.email">Email</span></dt>
-        <dd>
-            <span>{{athlete.email}}</span>
-        </dd>
-        <dt><span jhiTranslate="fsjdaApp.athlete.dojoclub">Dojoclub</span></dt>
-        <dd>
-            <div *ngIf="athlete.dojoclub">
-                <a [routerLink]="['/dojo-club', athlete.dojoclub?.id]">{{athlete.dojoclub?.name}}</a>
-            </div>
-        </dd>
+     <table class="table table-striped">
+    	<dl class="row-md jh-entity-details">
+    		<tbody>
+    			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.nom">Nom</span></dt></th>
+      				<td><dd><span>{{athlete.nom}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.prenom">Prenom</span></dt></th>
+      				<td><dd><span>{{athlete.prenom}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.dateCreation">Date Creation</span></dt></th>
+      				<td><dd><span>{{athlete.dateCreation | date:'mediumDate'}}</span></dd></td> 
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.sexe">Sexe</span></dt></th>
+      				<td><dd><span jhiTranslate="{{'fsjdaApp.Sexe.' + athlete.sexe}}">{{athlete.sexe}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.dateNaissance">Date Naissance</span></dt></th>
+      				<td><dd><span>{{athlete.dateNaissance | date:'mediumDate'}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.lieuNaissance">Lieu Naissance</span></dt></th>
+      				<td><dd><span>{{athlete.lieuNaissance}}</span></dd></td> 
+      			</tr>
+      			<tr>
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.adresse">Adresse</span></dt></th>
+      				<td><dd><span>{{athlete.adresse}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.telephone">Telephone</span></dt></th>
+      				<td><dd><span>{{athlete.telephone}}</span></dd></td>
+      			
+      				<th scope="row"><dt><span jhiTranslate="fsjdaApp.athlete.email">Email</span></dt></th>
+      				<td><dd><span>{{athlete.email}}</span></dd></td> 
+      			</tr>
+      			<tr>
+      				<th scope="row"> <dt><span jhiTranslate="fsjdaApp.athlete.dojoclub">Dojoclub</span></dt></th>
+      				<td><dd><div *ngIf="athlete.dojoclub"><a [routerLink]="['/dojo-club', athlete.dojoclub?.id]">{{athlete.dojoclub?.name}}</a></div></dd></td>
+      			</tr>
+    	</tbody>     
     </dl>
+    </table>
 
     <button type="submit"
             (click)="previousState()"
